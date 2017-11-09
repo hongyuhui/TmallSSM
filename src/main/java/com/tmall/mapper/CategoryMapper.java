@@ -9,8 +9,7 @@ import java.util.List;
  * Created by OovEver on 2017/11/9.
  */
 public interface CategoryMapper {
-    List<Category> list(Page page);
-    public int total();
+    List<Category> list();
 
     void add(Category category);
 
