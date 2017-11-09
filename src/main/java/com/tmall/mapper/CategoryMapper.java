@@ -18,4 +18,6 @@ public interface CategoryMapper {
 
     Category get(int id);
 
+    void update(Category category);
+
 }

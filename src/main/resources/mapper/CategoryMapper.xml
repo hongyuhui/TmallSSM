@@ -22,4 +22,7 @@
     <select id="get" resultType="Category">
         SELECT * FROM category WHERE id=#{id};
     </select>
+    <update id="update" parameterType="Category">
+        UPDATE category SET NAME =#{name} WHERE id=#{id}
+    </update>
 </mapper>
