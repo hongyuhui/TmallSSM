@@ -1,6 +1,7 @@
 package com.tmall.service;
 
 import com.tmall.pojo.Category;
+import com.tmall.util.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,5 +11,6 @@ import java.util.List;
  */
 @Service
 public interface CategoryService {
-    List<Category> list();
+    List<Category> list(Page page);
+    int total();
 }
