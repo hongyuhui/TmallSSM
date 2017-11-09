@@ -1,8 +1,5 @@
 package com.tmall.pojo;
 
-/**
- * Created by OovEver on 2017/11/9.
- */
 public class Category {
     private Integer id;
 
