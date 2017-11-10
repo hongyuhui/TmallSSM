@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class MybatisGenerator {
     public static void main(String[] args) throws ParseException, IOException, InvalidConfigurationException, XMLParserException, SQLException, InterruptedException {
-        String today = "2017-11-9";
+        String today = "2017-11-10";
         SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
         Date now = sdf.parse(today);
         Date d = new Date();

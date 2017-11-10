@@ -2,7 +2,6 @@ package com.tmall.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.tmall.pojo.Category;
 import com.tmall.service.CategoryService;
 import com.tmall.util.ImageUtil;
