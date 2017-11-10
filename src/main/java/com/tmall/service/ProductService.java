@@ -17,4 +17,6 @@ public interface ProductService {
     Product get(int id);
 //根据分类显示产品信息
     List list(int cid);
+//    显示第一张图片
+    void setFirstProductImage(Product p);
 }

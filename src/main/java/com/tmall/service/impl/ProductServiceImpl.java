@@ -4,7 +4,9 @@ import com.tmall.mapper.ProductMapper;
 import com.tmall.pojo.Category;
 import com.tmall.pojo.Product;
 import com.tmall.pojo.ProductExample;
+import com.tmall.pojo.ProductImage;
 import com.tmall.service.CategoryService;
+import com.tmall.service.ProductImageService;
 import com.tmall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,8 @@ public class ProductServiceImpl implements ProductService {
     ProductMapper productMapper;
     @Autowired
     CategoryService categoryService;
+    @Autowired
+    ProductImageService productImageService;
     @Override
     public void add(Product p) {
         productMapper.insert(p);
@@ -60,6 +64,24 @@ public class ProductServiceImpl implements ProductService {
         example.setOrderByClause("id desc");
         List result = productMapper.selectByExample(example);
         setCategory(result);
+//        这里未设置，导致无法显示图片缩略图
+        setFirstProductImage(result);
         return result;
+    }
+
+    @Override
+    public void setFirstProductImage(Product p) {
+        List<ProductImage> pis = productImageService.list(p.getId(), ProductImageService.type_single);
+        System.out.println("dsafasdfdsafsdafasdf");
+        System.out.println(pis.isEmpty());
+        if (!pis.isEmpty()) {
+            ProductImage pi = pis.get(0);
+            p.setFirstProductImage(pi);
+        }
+    }
+    public void setFirstProductImage(List<Product> ps) {
+        for (Product p : ps) {
+            setFirstProductImage(p);
+        }
     }
 }
