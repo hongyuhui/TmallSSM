@@ -1,7 +1,5 @@
-<!-- 模仿天
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8" isELIgnored="false"%>
-
 
 <script>
     $(function(){
@@ -24,20 +22,16 @@
             $("div.loginErrorMessageDiv").hide();
         });
 
-
-
         var left = window.innerWidth/2+162;
         $("div.loginSmallDiv").css("left",left);
     })
 </script>
-
 
 <div id="loginDiv" style="position: relative">
 
 	<div class="simpleLogo">
 		<a href="${contextPath}"><img src="img/site/simpleLogo.png"></a>
 	</div>
-
 
 	<img id="loginBackgroundImg" class="loginBackgroundImg" src="img/site/loginBackground.png">
 
@@ -52,20 +46,19 @@
 
 			<div class="login_acount_text">账户登录</div>
 			<div class="loginInput " >
-				<span class="loginInputIcon ">
-					<span class=" glyphicon glyphicon-user"></span>
-				</span>
+                <span class="loginInputIcon ">
+                    <span class=" glyphicon glyphicon-user"></span>
+                </span>
 				<input id="name" name="name" placeholder="手机/会员名/邮箱" type="text">
 			</div>
 
 			<div class="loginInput " >
-				<span class="loginInputIcon ">
-					<span class=" glyphicon glyphicon-lock"></span>
-				</span>
+                <span class="loginInputIcon ">
+                    <span class=" glyphicon glyphicon-lock"></span>
+                </span>
 				<input id="password" name="password" type="password" placeholder="密码" type="text">
 			</div>
 			<span class="text-danger">不要输入真实的天猫账号密码</span><br><br>
-
 
 			<div>
 				<a class="notImplementLink" href="#nowhere">忘记登录密码</a>
@@ -77,5 +70,4 @@
 		</div>
 	</form>
 
-
-</div>	
+</div>
