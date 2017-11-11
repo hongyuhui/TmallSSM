@@ -72,7 +72,6 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void setFirstProductImage(Product p) {
         List<ProductImage> pis = productImageService.list(p.getId(), ProductImageService.type_single);
-        System.out.println("dsafasdfdsafsdafasdf");
         System.out.println(pis.isEmpty());
         if (!pis.isEmpty()) {
             ProductImage pi = pis.get(0);
