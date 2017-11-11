@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.HtmlUtils;
 
 import javax.servlet.http.HttpSession;
@@ -33,7 +34,8 @@ public class ForeController {
     @Autowired
     OrderItemService     orderItemService;
     @Autowired
-    ReviewService reviewService;
+    ReviewService        reviewService;
+
     @RequestMapping("forehome")
     public String home(Model model) {
         List<Category> cs = categoryService.list();
@@ -45,13 +47,13 @@ public class ForeController {
 
     @RequestMapping("foreregister")
     public String register(Model model, User user) {
-        String name =  user.getName();
+        String name = user.getName();
         name = HtmlUtils.htmlEscape(name);
         user.setName(name);
         boolean exist = userService.isExist(name);
 
-        if(exist){
-            String m ="用户名已经被使用,不能使用";
+        if (exist) {
+            String m = "用户名已经被使用,不能使用";
             model.addAttribute("msg", m);
             model.addAttribute("user", null);
             return "fore/register";
@@ -60,12 +62,13 @@ public class ForeController {
 
         return "redirect:registerSuccessPage";
     }
+
     @RequestMapping("forelogin")
     public String login(@RequestParam("name") String name, @RequestParam("password") String password, Model model, HttpSession session) {
         name = HtmlUtils.htmlEscape(name);
-        User user = userService.get(name,password);
+        User user = userService.get(name, password);
 
-        if(null==user){
+        if (null == user) {
             model.addAttribute("msg", "账号密码错误");
             return "fore/login";
         }
@@ -97,4 +100,26 @@ public class ForeController {
         model.addAttribute("pvs", pvs);
         return "fore/product";
     }
+
+    @RequestMapping("forecheckLogin")
+    @ResponseBody
+    public String checkLogin(HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (user != null)
+            return "success";
+        return "fail";
+    }
+
+    @RequestMapping("foreloginAjax")
+    @ResponseBody
+    public String loginAjax(@RequestParam("name") String name, @RequestParam("password") String password, HttpSession session) {
+        name = HtmlUtils.htmlEscape(name);
+        User user = userService.get(name, password);
+        if (user == null) {
+            return "fail";
+        }
+        session.setAttribute("user", user);
+        return "success";
+    }
 }
+
