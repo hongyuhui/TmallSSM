@@ -1,5 +1,6 @@
 package com.tmall.service;
 
+import com.tmall.pojo.Category;
 import com.tmall.pojo.Product;
 
 import java.util.List;
@@ -19,4 +20,10 @@ public interface ProductService {
     List list(int cid);
 //    显示第一张图片
     void setFirstProductImage(Product p);
+
+    void fill(List<Category> cs);
+
+    void fill(Category c);
+
+    void fillByRow(List<Category> cs);
 }
